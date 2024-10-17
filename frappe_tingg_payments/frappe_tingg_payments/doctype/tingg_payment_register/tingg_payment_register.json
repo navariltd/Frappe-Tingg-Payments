@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TPRE-{YY}-{MM}-{######}",
+ "creation": "2024-10-16 07:07:55.964891",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "amended_from",
+  "customer",
+  "msisdn",
+  "company",
+  "service_code",
+  "amount_paid",
+  "invoice_number",
+  "receipt_number",
+  "account_number",
+  "payer_transaction_id",
+  "payment_id",
+  "service_id",
+  "hub_id",
+  "hub_country",
+  "extra_data",
+  "column_break_vpoe",
+  "mode_of_payment",
+  "payment_ack_date",
+  "payment_date",
+  "currency",
+  "iso_code",
+  "client_code",
+  "payer_narration",
+  "receiver_narration",
+  "status_first_send",
+  "next_send_time",
+  "last_send",
+  "number_of_sends",
+  "overall_status",
+  "payment_entry",
+  "submit_payment"
+ ],
+ "fields": [
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tingg Payment Register",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "msisdn",
+   "fieldtype": "Data",
+   "label": "MSISDN"
+  },
+  {
+   "fieldname": "service_code",
+   "fieldtype": "Data",
+   "label": "Service Code"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Int",
+   "label": "Amount Paid"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Invoice Number"
+  },
+  {
+   "fieldname": "receipt_number",
+   "fieldtype": "Data",
+   "label": "Receipt Number"
+  },
+  {
+   "fieldname": "payer_transaction_id",
+   "fieldtype": "Data",
+   "label": "Payer Transaction ID"
+  },
+  {
+   "fieldname": "payment_id",
+   "fieldtype": "Data",
+   "label": "Payment ID"
+  },
+  {
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number"
+  },
+  {
+   "fieldname": "payer_narration",
+   "fieldtype": "Data",
+   "label": "Payer Narration"
+  },
+  {
+   "fieldname": "receiver_narration",
+   "fieldtype": "Data",
+   "label": "Receiver Narration"
+  },
+  {
+   "fieldname": "extra_data",
+   "fieldtype": "Small Text",
+   "label": "Extra Data"
+  },
+  {
+   "fieldname": "column_break_vpoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "payment_ack_date",
+   "fieldtype": "Date",
+   "label": "Payment Ack Date"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "iso_code",
+   "fieldtype": "Data",
+   "label": "ISO Code"
+  },
+  {
+   "fieldname": "client_code",
+   "fieldtype": "Data",
+   "label": "Client Code"
+  },
+  {
+   "fieldname": "status_first_send",
+   "fieldtype": "Data",
+   "label": "Status First Send"
+  },
+  {
+   "fieldname": "next_send_time",
+   "fieldtype": "Date",
+   "label": "Next Send Time"
+  },
+  {
+   "fieldname": "service_id",
+   "fieldtype": "Data",
+   "label": "Service ID"
+  },
+  {
+   "fieldname": "last_send",
+   "fieldtype": "Date",
+   "label": "Last Send"
+  },
+  {
+   "fieldname": "number_of_sends",
+   "fieldtype": "Data",
+   "label": "Number of Sends"
+  },
+  {
+   "fieldname": "hub_id",
+   "fieldtype": "Data",
+   "label": "Hub ID"
+  },
+  {
+   "fieldname": "hub_country",
+   "fieldtype": "Data",
+   "label": "Hub Country"
+  },
+  {
+   "fieldname": "overall_status",
+   "fieldtype": "Data",
+   "label": "Overall Status"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "label": "Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "submit_payment",
+   "fieldtype": "Check",
+   "label": "Submit Payment"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-10-17 10:54:52.961589",
+ "modified_by": "Administrator",
+ "module": "Frappe Tingg Payments",
+ "name": "Tingg Payment Register",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

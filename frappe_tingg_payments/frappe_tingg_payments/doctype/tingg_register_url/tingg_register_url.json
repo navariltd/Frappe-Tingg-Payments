@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:tingg_settings",
+ "creation": "2024-10-15 19:38:29.892659",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tingg_settings",
+  "company",
+  "callback_url",
+  "column_break_lhld",
+  "mode_of_payment",
+  "customer_url"
+ ],
+ "fields": [
+  {
+   "fieldname": "tingg_settings",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tingg Settings",
+   "options": "Tingg Settings",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "callback_url",
+   "fieldtype": "Data",
+   "label": "Callback URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_lhld",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_url",
+   "fieldtype": "Data",
+   "label": "Customer URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-16 21:14:57.612651",
+ "modified_by": "Administrator",
+ "module": "Frappe Tingg Payments",
+ "name": "Tingg Register URL",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
