@@ -3,7 +3,7 @@ import frappe
 
 @frappe.whitelist(allow_guest=True)
 def confirmation(**kwargs):
-    print("KWARGS", frappe._dict(kwargs))
+
     try:
         args = frappe._dict(kwargs)
         doc = frappe.new_doc("Tingg Payment Register")
@@ -35,6 +35,3 @@ def confirmation(**kwargs):
         doc.save()
     except Exception as e:
         frappe.log_error(str(e))
-
-
-# 4790aa18d9765c8:b87b0bddc7a798f

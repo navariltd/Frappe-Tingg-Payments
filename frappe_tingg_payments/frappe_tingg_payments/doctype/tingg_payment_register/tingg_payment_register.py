@@ -2,10 +2,14 @@
 # For license information, please see license.txt
 
 import frappe
-import frappe.defaults
 from frappe.model.document import Document
 from frappe import _
 
+from ...utils.helpers import (
+    get_outstanding_invoices,
+    get_unallocated_payments,
+    create_and_reconcile_payment_reconciliation,
+)
 from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
     create_payment_entry,
 )
@@ -28,13 +32,13 @@ class TinggPaymentRegister(Document):
 
     def before_submit(self):
         if not self.amount_paid:
-            frappe.throw(_("Amount Paid is required"))
+            frappe.log_error(frappe.get_traceback(), _("Amount Paid is required"))
         if not self.company:
-            frappe.throw(_("Company is required"))
+            frappe.log_error(frappe.get_traceback(), _("Company is required"))
         if not self.customer:
-            frappe.throw(_("Customer is required"))
+            frappe.log_error(frappe.get_traceback(), _("Customer is required"))
         if not self.mode_of_payment:
-            frappe.throw(_("Mode of Payment is required"))
+            frappe.log_error(frappe.get_traceback(), _("Mode of Payment is required"))
         if self.submit_payment:
             self.payment_entry = self.create_payment_entry()
 
@@ -53,3 +57,24 @@ class TinggPaymentRegister(Document):
         )
 
         return payment_entry.name
+
+    def on_update(self):
+        self.submit_payment = 1
+        self.submit()
+
+    def on_submit(self):
+        try:
+            outstanding_invoices = get_outstanding_invoices(self.company, self.customer)
+            unallocated_payments = get_unallocated_payments(
+                self.customer, self.company, self.currency
+            )
+
+            if outstanding_invoices and unallocated_payments:
+                create_and_reconcile_payment_reconciliation(
+                    outstanding_invoices=outstanding_invoices,
+                    customer=self.customer,
+                    company=self.company,
+                    payment_entries=unallocated_payments,
+                )
+        except Exception as e:
+            frappe.log_error(frappe.get_traceback(), str(e))

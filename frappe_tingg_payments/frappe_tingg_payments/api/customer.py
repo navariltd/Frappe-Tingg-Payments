@@ -4,11 +4,10 @@ from frappe import _
 from erpnext.selling.doctype.customer.customer import (
     get_customer_outstanding,
 )
-import frappe.defaults
 
 
 @frappe.whitelist(allow_guest=True)
-def get_customer_outstanding_balance(**kwargs):
+def get_customer_balance(**kwargs):
     args = frappe._dict(kwargs)
 
     company = frappe.defaults.get_user_default("company")
@@ -19,8 +18,10 @@ def get_customer_outstanding_balance(**kwargs):
         frappe.response["http_status_code"] = 404
     else:
         try:
-            outstanding = get_customer_outstanding(customer, company)
-            frappe.response["message"] = {"outstanding_balance": outstanding}
+            customer_outstanding_balance = get_customer_outstanding(customer, company)
+            frappe.response["message"] = {
+                "outstanding_balance": customer_outstanding_balance
+            }
             frappe.response["http_status_code"] = 200
         except Exception as e:
             frappe.response["message"] = _("Something went wrong")
