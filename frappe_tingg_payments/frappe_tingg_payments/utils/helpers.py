@@ -11,8 +11,38 @@ def get_outstanding_invoices(company, customer=None):
     return _get_outstanding_invoices(company, customer, "Sales Invoice")
 
 
-def get_unallocated_payments(customer, company, currency):
-    return _get_unallocated_payments(customer, company, currency)
+# def get_unallocated_payments(customer, company, currency):
+#     return _get_unallocated_payments(customer, company, currency)
+
+
+def get_unallocated_payments(customer, company, currency, payment_name):
+    filters = {
+        "name": payment_name,
+        "party": customer,
+        "company": company,
+        "docstatus": 1,
+        "party_type": "Customer",
+        "payment_type": "Receive",
+        "unallocated_amount": [">", 0],
+        "paid_from_account_currency": currency,
+    }
+
+    unallocated_payment = frappe.db.get_value(
+        "Payment Entry",
+        filters,
+        [
+            "name",
+            "paid_amount",
+            "party_name as customer_name",
+            "received_amount",
+            "posting_date",
+            "unallocated_amount",
+            "mode_of_payment",
+            "paid_from_account_currency as currency",
+        ],
+        as_dict=True,
+    )
+    return [unallocated_payment]
 
 
 def create_and_reconcile_payment_reconciliation(

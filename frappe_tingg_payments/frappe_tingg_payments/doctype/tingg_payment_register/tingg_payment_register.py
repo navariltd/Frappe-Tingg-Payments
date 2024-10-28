@@ -39,7 +39,13 @@ class TinggPaymentRegister(Document):
             frappe.log_error(frappe.get_traceback(), _("Customer is required"))
         if not self.mode_of_payment:
             frappe.log_error(frappe.get_traceback(), _("Mode of Payment is required"))
-        if self.submit_payment:
+        if (
+            self.submit_payment
+            and self.amount_paid
+            and self.company
+            and self.customer
+            and self.mode_of_payment
+        ):
             self.payment_entry = self.create_payment_entry()
 
     def create_payment_entry(self):
@@ -59,14 +65,15 @@ class TinggPaymentRegister(Document):
         return payment_entry.name
 
     def on_update(self):
-        self.submit_payment = 1
-        self.submit()
+        if self.mode_of_payment:
+            self.submit_payment = 1
+            self.submit()
 
     def on_submit(self):
         try:
             outstanding_invoices = get_outstanding_invoices(self.company, self.customer)
             unallocated_payments = get_unallocated_payments(
-                self.customer, self.company, self.currency
+                self.customer, self.company, self.currency, self.payment_entry
             )
 
             if outstanding_invoices and unallocated_payments:
