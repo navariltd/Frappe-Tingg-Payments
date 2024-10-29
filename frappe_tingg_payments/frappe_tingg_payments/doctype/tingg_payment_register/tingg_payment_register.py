@@ -6,13 +6,15 @@ from frappe.model.document import Document
 from frappe import _
 
 from ...utils.helpers import (
+    create_payment_entry,
     get_outstanding_invoices,
     get_unallocated_payments,
     create_and_reconcile_payment_reconciliation,
 )
-from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
-    create_payment_entry,
-)
+
+# from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
+#     create_payment_entry,
+# )
 
 
 class TinggPaymentRegister(Document):
