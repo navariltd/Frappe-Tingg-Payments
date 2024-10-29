@@ -7,7 +7,6 @@ app_license = "agpl-3.0"
 required_apps = [
     "frappe/erpnext",
     "payments",
-    "navariltd/frappe-mpsa-payments",
 ]
 
 # Includes in <head>
