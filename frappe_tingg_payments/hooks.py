@@ -5,8 +5,7 @@ app_description = "Tingg Payment Integration with ERPNext"
 app_email = "solutions@navari.co.ke"
 app_license = "agpl-3.0"
 required_apps = [
-    "frappe/erpnext",
-    "payments",
+    "frappe/erpnext/payments",
 ]
 
 # Includes in <head>
