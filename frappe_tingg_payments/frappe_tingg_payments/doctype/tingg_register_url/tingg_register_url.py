@@ -20,7 +20,7 @@ class TinggRegisterURL(Document):
 
         customer_url = (
             site_url
-            + "/api/method/frappe_tingg_payments.frappe_tingg_payments.api.customer.get_customer"
+            + "/api/method/frappe_tingg_payments.frappe_tingg_payments.api.customer.get_customer_balance"
         )
 
         if not self.callback_url:
