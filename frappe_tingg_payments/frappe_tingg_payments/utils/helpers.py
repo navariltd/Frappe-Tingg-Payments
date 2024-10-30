@@ -8,9 +8,10 @@ from erpnext.accounts.doctype.journal_entry.journal_entry import (
 from erpnext.accounts.utils import QueryPaymentLedger
 from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
 from erpnext.setup.utils import get_exchange_rate
-from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
-    get_outstanding_invoices as _get_outstanding_invoices,
-)
+
+# from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
+#     get_outstanding_invoices as _get_outstanding_invoices,
+# )
 from frappe import _, qb
 from frappe.utils import nowdate, flt, getdate
 
