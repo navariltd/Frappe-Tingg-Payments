@@ -67,7 +67,7 @@
   },
   {
    "fieldname": "amount_paid",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "label": "Amount Paid"
   },
   {
@@ -209,7 +209,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-05 15:52:21.872065",
+ "modified": "2024-11-05 16:39:59.492174",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Payment Register",
