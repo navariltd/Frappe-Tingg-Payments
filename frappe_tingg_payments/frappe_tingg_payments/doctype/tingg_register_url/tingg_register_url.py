@@ -15,7 +15,7 @@ class TinggRegisterURL(Document):
         site_url = get_request_site_address(True)
         callback_url = (
             site_url
-            + "/api/method/frappe_tingg_payments.frappe_tingg_payments.api.callback.confirmation"
+            + "/api/method/frappe_tingg_payments.frappe_tingg_payments.api.tingg_payment.confirmation"
         )
 
         customer_url = (
