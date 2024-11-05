@@ -12,10 +12,6 @@ from ...utils.helpers import (
     create_and_reconcile_payment_reconciliation,
 )
 
-# from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
-#     create_payment_entry,
-# )
-
 
 class TinggPaymentRegister(Document):
 
@@ -41,6 +37,7 @@ class TinggPaymentRegister(Document):
             frappe.log_error(frappe.get_traceback(), _("Customer is required"))
         if not self.mode_of_payment:
             frappe.log_error(frappe.get_traceback(), _("Mode of Payment is required"))
+
         if (
             self.submit_payment
             and self.amount_paid
@@ -63,6 +60,7 @@ class TinggPaymentRegister(Document):
             None,
             self.submit_payment,
         )
+        frappe.log_error(payment_entry.name)
 
         return payment_entry.name
 
