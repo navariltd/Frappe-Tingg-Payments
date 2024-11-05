@@ -19,8 +19,11 @@ def get_customer_balance(**kwargs):
     else:
         try:
             customer_outstanding_balance = get_customer_outstanding(customer, company)
+            customer_name = frappe.db.get_value("Customer", customer, "customer_name")
+            print("CUSTOMER", customer_name)
             frappe.response["message"] = {
-                "outstanding_balance": customer_outstanding_balance
+                "customer_name": customer_name,
+                "outstanding_balance": customer_outstanding_balance,
             }
             frappe.response["http_status_code"] = 200
         except Exception as e:

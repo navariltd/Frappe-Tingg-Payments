@@ -9,9 +9,6 @@ from erpnext.accounts.utils import QueryPaymentLedger
 from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
 from erpnext.setup.utils import get_exchange_rate
 
-# from frappe_mpsa_payments.frappe_mpsa_payments.api.payment_entry import (
-#     get_outstanding_invoices as _get_outstanding_invoices,
-# )
 from frappe import _, qb
 from frappe.utils import nowdate, flt, getdate
 
@@ -172,10 +169,6 @@ def set_paid_amount_and_received_amount(
     return paid_amount, received_amount
 
 
-# def get_outstanding_invoices(company, customer=None):
-#     return _get_outstanding_invoices(company, customer, "Sales Invoice")
-
-
 def get_outstanding_invoices(
     company,
     customer,
@@ -203,8 +196,6 @@ def get_outstanding_invoices(
         party_account_type = account_type or party_account_type
     else:
         party_account_type = erpnext.get_party_account_type("Customer")
-
-    held_invoices = get_held_invoices("Customer", customer)
 
     common_filter = common_filter or []
     common_filter.append(ple.account_type == party_account_type)
@@ -241,10 +232,7 @@ def get_outstanding_invoices(
             ):
                 continue
 
-            if (
-                d.voucher_type != "Purchase Invoice"
-                or d.voucher_no not in held_invoices
-            ):
+            if d.voucher_type != "Purchase Invoice":
                 outstanding_invoices.append(
                     frappe._dict(
                         {
@@ -265,26 +253,6 @@ def get_outstanding_invoices(
         outstanding_invoices, key=lambda k: k["due_date"] or getdate(nowdate())
     )
     return outstanding_invoices
-
-
-def get_held_invoices(party_type, party):
-    """
-    Returns a list of names Purchase Invoices for the given party that are on hold
-    """
-    held_invoices = None
-
-    if party_type == "Supplier":
-        held_invoices = frappe.db.sql(
-            "select name from `tabPurchase Invoice` where on_hold = 1 and release_date IS NOT NULL and release_date > CURDATE()",
-            as_dict=1,
-        )
-        held_invoices = set(d["name"] for d in held_invoices)
-
-    return held_invoices
-
-
-# def get_unallocated_payments(customer, company, currency):
-#     return _get_unallocated_payments(customer, company, currency)
 
 
 def get_unallocated_payments(customer, company, currency, payment_name):

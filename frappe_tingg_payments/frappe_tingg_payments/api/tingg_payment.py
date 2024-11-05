@@ -3,6 +3,7 @@ import frappe
 
 @frappe.whitelist(allow_guest=True)
 def confirmation(**kwargs):
+    frappe.set_user("Administrator")
 
     try:
         args = frappe._dict(kwargs)
