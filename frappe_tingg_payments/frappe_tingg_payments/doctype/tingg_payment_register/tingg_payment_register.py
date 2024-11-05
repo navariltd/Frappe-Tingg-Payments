@@ -60,7 +60,6 @@ class TinggPaymentRegister(Document):
             None,
             self.submit_payment,
         )
-        frappe.log_error(payment_entry.name)
 
         return payment_entry.name
 
