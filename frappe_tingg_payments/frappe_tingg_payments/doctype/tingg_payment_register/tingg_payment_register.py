@@ -37,7 +37,6 @@ class TinggPaymentRegister(Document):
             frappe.log_error(frappe.get_traceback(), _("Customer is required"))
         if not self.mode_of_payment:
             frappe.log_error(frappe.get_traceback(), _("Mode of Payment is required"))
-
         if (
             self.submit_payment
             and self.amount_paid
@@ -45,6 +44,7 @@ class TinggPaymentRegister(Document):
             and self.customer
             and self.mode_of_payment
         ):
+            print("WP")
             self.payment_entry = self.create_payment_entry()
 
     def create_payment_entry(self):

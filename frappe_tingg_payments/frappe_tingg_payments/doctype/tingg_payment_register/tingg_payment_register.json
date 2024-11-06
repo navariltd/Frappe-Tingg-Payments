@@ -8,6 +8,7 @@
  "field_order": [
   "amended_from",
   "customer",
+  "customer_name",
   "msisdn",
   "company",
   "service_code",
@@ -203,13 +204,18 @@
    "fieldname": "currency",
    "fieldtype": "Data",
    "label": "Currency"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
   }
  ],
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-05 16:39:59.492174",
+ "modified": "2024-11-06 13:47:24.160806",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Payment Register",

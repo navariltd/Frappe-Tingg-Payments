@@ -8,7 +8,8 @@ def confirmation(**kwargs):
     try:
         args = frappe._dict(kwargs)
         doc = frappe.new_doc("Tingg Payment Register")
-        doc.customer = args.get("customerName")
+        doc.customer = args.get("accountNumber")
+        doc.customer_name = args.get("customerName")
         doc.msisdn = args.get("MSISDN")
         doc.service_code = args.get("serviceCode")
         doc.amount_paid = float(args.get("amountPaid"))
@@ -16,7 +17,6 @@ def confirmation(**kwargs):
         doc.receipt_number = args.get("receiptNumber")
         doc.payer_transaction_id = args.get("payerTransactionID")
         doc.payment_id = args.get("paymentID")
-        doc.account_number = args.get("accountNumber")
         doc.receiver_narration = args.get("receiverNarration")
         doc.payer_narration = args.get("payerNarration")
 
