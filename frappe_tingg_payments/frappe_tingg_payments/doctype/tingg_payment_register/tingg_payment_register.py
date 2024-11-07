@@ -82,5 +82,8 @@ class TinggPaymentRegister(Document):
                     company=self.company,
                     payment_entries=unallocated_payments,
                 )
+            frappe.clear_messages()
+            frappe.response["message"] = "Payment was successful"
+            frappe.response["http_status_code"] = 200
         except Exception as e:
             frappe.log_error(frappe.get_traceback(), str(e))

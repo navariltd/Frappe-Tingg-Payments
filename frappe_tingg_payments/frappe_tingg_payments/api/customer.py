@@ -20,7 +20,6 @@ def get_customer_balance(**kwargs):
         try:
             customer_outstanding_balance = get_customer_outstanding(customer, company)
             customer_name = frappe.db.get_value("Customer", customer, "customer_name")
-            print("CUSTOMER", customer_name)
             frappe.response["message"] = {
                 "customer_name": customer_name,
                 "outstanding_balance": customer_outstanding_balance,
