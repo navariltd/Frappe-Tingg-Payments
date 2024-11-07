@@ -44,7 +44,6 @@ class TinggPaymentRegister(Document):
             and self.customer
             and self.mode_of_payment
         ):
-            print("WP")
             self.payment_entry = self.create_payment_entry()
 
     def create_payment_entry(self):
@@ -83,7 +82,10 @@ class TinggPaymentRegister(Document):
                     payment_entries=unallocated_payments,
                 )
             frappe.clear_messages()
-            frappe.response["message"] = "Payment was successful"
+            frappe.response["beepTransactionID"] = self.beep_transaction_id
+            frappe.response["statusCode"] = "140"
+            frappe.response["statusDescription"] = "Payment pushed successfully"
+            frappe.response["payerTransactionID"] = self.payer_transaction_id
             frappe.response["http_status_code"] = 200
         except Exception as e:
             frappe.log_error(frappe.get_traceback(), str(e))
