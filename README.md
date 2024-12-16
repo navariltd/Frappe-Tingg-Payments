@@ -4,9 +4,9 @@ This is a Frappe-based application that integrates with the Tingg API from Cellu
 
 ### Features
 
-    - **Tingg Settings:** Configure Live or Sandbox environments.
-    - **Tingg Register URL:** Allows configuration of ```Callback URL``` and ```Customer URL```
-    - **Tingg Payment Register:** Records incoming payment transactions received via the Callback URL
+  - **Tingg Settings:** Configure Live or Sandbox environments.
+  - **Tingg Register URL:** Allows configuration of ```Callback URL``` and ```Customer URL```
+  - **Tingg Payment Register:** Records incoming payment transactions received via the Callback URL.
 
 #### DocTypes
 
