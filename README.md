@@ -16,6 +16,8 @@ This DocType allows setup of both live and sandbox environments. Additionally, o
 
 1. **Payment Gateway Name:** Desired name for the the Payment Gateway.
 2. **Sandbox:** Tick if the settings are for the sandbox environment.
+   
+![tingg_settings](https://github.com/user-attachments/assets/cbd07bb8-4549-4253-b920-41f9e9594c71)
 
 <h4>Tingg Register URL</h4>
 
@@ -25,6 +27,8 @@ This DocType is responsible for the generation of the Callback URL and Customer 
 2. **Mode of Payment:** Identifies the payment mode for better categorization in your accounting or ERP system.
 3. **Callback URL:** This is a URL used to receive successful payments remitted to your Tingg account into your ERP when a payment is made.
 4. **Customer URL:** This is a URL to query a customer's outstanding balance from your ERP.
+
+![register_url](https://github.com/user-attachments/assets/1aae0ee6-ecb6-40f1-a946-045c3447e128)
 
 <h4>Tingg Payment Register</h4>
 
@@ -51,6 +55,9 @@ This DocType is responsible for acknowledging and reconciling all payments made 
 19. **Hashed MSISDN:** Hashed version of a customer's phone number.
 20. **Account Number:**
 21. **Extra Data:** Any extra data usually in JSON format.
+
+![payment_register](https://github.com/user-attachments/assets/23c85777-adae-46fe-9ffe-66f90e7ba72f)
+
 
 ### Installation
 
