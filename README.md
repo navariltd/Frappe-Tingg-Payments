@@ -28,7 +28,7 @@ This DocType is responsible for the generation of the Callback URL and Customer 
 3. **Callback URL:** This is a URL used to receive successful payments remitted to your Tingg account into your ERP when a payment is made.
 4. **Customer URL:** This is a URL to query a customer's outstanding balance from your ERP.
 
-![tingg_register_url2](https://github.com/user-attachments/assets/6d6a3c1e-6f49-41be-93ff-fcb2cea20dda)
+![image](https://github.com/user-attachments/assets/17263275-efa4-41ea-825b-0b7550fceb63)
 
 <h4>Tingg Payment Register</h4>
 
