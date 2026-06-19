@@ -1,0 +1,54 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"20LO1BtRFD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tingg</span>\",\"col\":12}},{\"id\":\"67N1wLUNlZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Settings\",\"col\":3}},{\"id\":\"z4_p5ejBrQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Register Url\",\"col\":3}},{\"id\":\"uh4x-ft9g0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Payment Register\",\"col\":3}}]",
+ "creation": "2026-06-19 13:11:23.675483",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "money-coins-1",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Tingg",
+ "links": [],
+ "modified": "2026-06-19 13:16:57.645510",
+ "modified_by": "Administrator",
+ "module": "Frappe Tingg Payments",
+ "name": "Tingg",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 62.1,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tingg Settings",
+   "link_to": "Tingg Settings",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tingg Register Url",
+   "link_to": "Tingg Register URL",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tingg Payment Register",
+   "link_to": "Tingg Payment Register",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Tingg"
+}
