@@ -45,6 +45,8 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer"
   },
@@ -61,6 +63,7 @@
   {
    "fieldname": "amount_paid",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Amount Paid"
   },
   {
@@ -71,6 +74,8 @@
   {
    "fieldname": "account_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Account Number"
   },
   {
@@ -95,12 +100,16 @@
   {
    "fieldname": "mode_of_payment",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Mode of Payment",
    "options": "Mode of Payment"
   },
   {
    "fieldname": "payment_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Payment Date"
   },
   {
@@ -116,12 +125,15 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Company",
    "options": "Company"
   },
   {
    "fieldname": "payment_entry",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Payment Entry",
    "options": "Payment Entry",
    "read_only": 1
@@ -135,6 +147,7 @@
   {
    "fieldname": "currency",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Currency"
   },
   {
@@ -167,11 +180,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-07 15:28:29.922107",
+ "modified": "2026-06-19 13:18:44.535010",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Payment Register",
- "naming_rule": "Expression",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -188,6 +201,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
