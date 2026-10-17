@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - develop
+      - feat/frappe-v16-navigation
   pull_request:
 
 concurrency:
