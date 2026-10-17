@@ -1,0 +1,17 @@
+
+{
+  "app": "frappe_tingg_payments",
+  "doctype": "Dock",
+  "name": "frappe_tingg_payments",
+  "standard": 1,
+  "items": [
+    {
+      "added": 0,
+      "hidden": 0,
+      "icon": "hand-coins",
+      "link_to": "Tingg",
+      "link_type": "Sidebar",
+      "title": "Tingg"
+    }
+  ]
+}
