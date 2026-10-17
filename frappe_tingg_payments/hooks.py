@@ -6,6 +6,21 @@ app_email = "solutions@navari.co.ke"
 app_license = "agpl-3.0"
 required_apps = ["frappe/erpnext"]
 
+
+# Frappe v16 Apps Screen registration
+app_home = "/app/tingg"
+
+add_to_apps_screen = [
+    {
+        "name": app_name,
+        "title": "Tingg Payments",
+        "route": app_home,
+        "has_permission": "frappe_tingg_payments.check_app_permission",
+        "sequence_id": 1,
+    }
+]
+
+
 # Includes in <head>
 # ------------------
 
