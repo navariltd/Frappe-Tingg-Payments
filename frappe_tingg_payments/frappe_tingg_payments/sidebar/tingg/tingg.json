@@ -1,0 +1,85 @@
+
+{
+  "app": "frappe_tingg_payments",
+  "doctype": "Sidebar",
+  "header_icon": "money-coins-1",
+  "items": [
+    {
+      "child": 0,
+      "collapsible": 1,
+      "doctype": "Sidebar Item",
+      "icon": "accounting",
+      "idx": 1,
+      "indent": 1,
+      "keep_closed": 0,
+      "label": "Transactions",
+      "parentfield": "items",
+      "parenttype": "Sidebar",
+      "show_arrow": 0,
+      "type": "Section Break"
+    },
+    {
+      "child": 1,
+      "collapsible": 1,
+      "doctype": "Sidebar Item",
+      "idx": 2,
+      "indent": 0,
+      "keep_closed": 0,
+      "label": "Tingg Payment Register",
+      "link_to": "Tingg Payment Register",
+      "link_type": "DocType",
+      "parentfield": "items",
+      "parenttype": "Sidebar",
+      "show_arrow": 0,
+      "type": "Link"
+    },
+    {
+      "child": 0,
+      "collapsible": 1,
+      "doctype": "Sidebar Item",
+      "icon": "setting",
+      "idx": 3,
+      "indent": 1,
+      "keep_closed": 0,
+      "label": "Configuration",
+      "parentfield": "items",
+      "parenttype": "Sidebar",
+      "show_arrow": 0,
+      "type": "Section Break"
+    },
+    {
+      "child": 1,
+      "collapsible": 1,
+      "doctype": "Sidebar Item",
+      "idx": 4,
+      "indent": 0,
+      "keep_closed": 0,
+      "label": "Tingg Settings",
+      "link_to": "Tingg Settings",
+      "link_type": "DocType",
+      "parentfield": "items",
+      "parenttype": "Sidebar",
+      "show_arrow": 0,
+      "type": "Link"
+    },
+    {
+      "child": 1,
+      "collapsible": 1,
+      "doctype": "Sidebar Item",
+      "idx": 5,
+      "indent": 0,
+      "keep_closed": 0,
+      "label": "Tingg Register URL",
+      "link_to": "Tingg Register URL",
+      "link_type": "DocType",
+      "parentfield": "items",
+      "parenttype": "Sidebar",
+      "show_arrow": 0,
+      "type": "Link"
+    }
+  ],
+  "module": "Frappe Tingg Payments",
+  "name": "Tingg",
+  "standard": 1,
+  "title": "Tingg"
+}
