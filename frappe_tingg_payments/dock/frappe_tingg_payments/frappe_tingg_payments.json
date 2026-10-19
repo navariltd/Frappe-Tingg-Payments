@@ -1,0 +1,24 @@
+{
+ "app": "frappe_tingg_payments",
+ "creation": "2026-10-19 11:28:31.994592",
+ "docstatus": 0,
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "money-coins-1",
+   "link_to": "Frappe Tingg Payments",
+   "link_type": "Sidebar",
+   "title": "Tingg"
+  }
+ ],
+ "modified": "2026-10-19 11:28:31.994592",
+ "modified_by": "Administrator",
+ "mount_on": "",
+ "name": "frappe_tingg_payments",
+ "owner": "Administrator",
+ "standard": 1,
+ "user": ""
+}
