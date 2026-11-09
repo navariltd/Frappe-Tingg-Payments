@@ -6,10 +6,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "gateway_section",
   "payment_gateway_name",
-  "sandbox"
+  "environment",
+  "column_break_gateway",
+  "logging_section",
+  "log_balance_lookups",
+  "column_break_logging"
  ],
  "fields": [
+  {
+   "fieldname": "gateway_section",
+   "fieldtype": "Section Break",
+   "label": "Gateway"
+  },
   {
    "fieldname": "payment_gateway_name",
    "fieldtype": "Data",
@@ -19,15 +29,42 @@
    "unique": 1
   },
   {
-   "default": "0",
-   "fieldname": "sandbox",
-   "fieldtype": "Check",
-   "label": "Sandbox"
+   "fieldname": "column_break_gateway",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Live",
+   "description": "The Tingg environment these settings are for.",
+   "fieldname": "environment",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Environment",
+   "options": "Live\nSandbox",
+   "reqd": 1
+  },
+  {
+   "description": "Every payment confirmation received from Tingg is saved as an Integration Request. Logs are deleted after the period set in Log Settings (90 days by default).",
+   "fieldname": "logging_section",
+   "fieldtype": "Section Break",
+   "label": "Request Logging"
+  },
+  {
+   "default": "Yes",
+   "description": "Also save each customer balance lookup. Choose No to keep customer names and balances out of the logs.",
+   "fieldname": "log_balance_lookups",
+   "fieldtype": "Select",
+   "label": "Log Balance Lookups",
+   "options": "Yes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_logging",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-15 19:45:43.748727",
+ "modified": "2026-11-09 11:54:17.104303",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Settings",
@@ -47,6 +84,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": []
