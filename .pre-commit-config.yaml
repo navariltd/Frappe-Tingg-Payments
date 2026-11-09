@@ -1,11 +1,12 @@
-exclude: 'node_modules|.git'
+exclude: "node_modules|.git"
 default_stages: [commit]
+default_language_version:
+  node: 24.15.0
 fail_fast: false
-
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
         files: "frappe_tingg_payments.*"
@@ -35,33 +36,32 @@ repos:
         types_or: [javascript, vue, scss]
         # Ignore any files that might contain jinja / bundles
         exclude: |
-            (?x)^(
-                frappe_tingg_payments/public/dist/.*|
-                .*node_modules.*|
-                .*boilerplate.*|
-                frappe_tingg_payments/templates/includes/.*|
-                frappe_tingg_payments/public/js/lib/.*
-            )$
-
+          (?x)^(
+              frappe_tingg_payments/public/dist/.*|
+              .*node_modules.*|
+              .*boilerplate.*|
+              frappe_tingg_payments/templates/includes/.*|
+              frappe_tingg_payments/public/js/lib/.*
+          )$
 
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.44.0
     hooks:
       - id: eslint
         types_or: [javascript]
-        args: ['--quiet']
+        args: ["--quiet"]
         # Ignore any files that might contain jinja / bundles
         exclude: |
-            (?x)^(
-                frappe_tingg_payments/public/dist/.*|
-                cypress/.*|
-                .*node_modules.*|
-                .*boilerplate.*|
-                frappe_tingg_payments/templates/includes/.*|
-                frappe_tingg_payments/public/js/lib/.*
-            )$
+          (?x)^(
+              frappe_tingg_payments/public/dist/.*|
+              cypress/.*|
+              .*node_modules.*|
+              .*boilerplate.*|
+              frappe_tingg_payments/templates/includes/.*|
+              frappe_tingg_payments/public/js/lib/.*
+          )$
 
 ci:
-    autoupdate_schedule: weekly
-    skip: []
-    submodules: false
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
