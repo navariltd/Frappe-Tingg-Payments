@@ -5,10 +5,10 @@ __version__ = "0.0.1"
 
 
 def check_app_permission():
-    if frappe.session.user == "Administrator":
-        return True
+	if frappe.session.user == "Administrator":
+		return True
 
-    if is_website_user():
-        return False
+	if is_website_user():
+		return False
 
-    return True
+	return bool(frappe.has_permission("Tingg Payment Register", "read"))
