@@ -90,6 +90,8 @@ jobs:
       - name: Install
         working-directory: /home/runner/frappe-bench
         run: |
+          bench get-app --skip-assets --branch version-16 erpnext
+          bench get-app --skip-assets --branch version-16 payments
           bench get-app frappe_tingg_payments $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site --db-root-password root --admin-password admin test_site
