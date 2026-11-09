@@ -7,17 +7,17 @@ app_license = "agpl-3.0"
 app_logo_url = "/assets/frappe_tingg_payments/images/tingg_logo.png"
 app_home = "/desk/tingg"
 
-required_apps = ["frappe/erpnext"]
+required_apps = ["frappe/erpnext", "frappe/payments"]
 
 
 add_to_apps_screen = [
-    {
-        "name": app_name,
-        "logo": app_logo_url,
-        "title": "Tingg",
-        "route": app_home,
-        "has_permission": "frappe_tingg_payments.check_app_permission",
-    }
+	{
+		"name": app_name,
+		"logo": app_logo_url,
+		"title": "Tingg",
+		"route": app_home,
+		"has_permission": "frappe_tingg_payments.check_app_permission",
+	}
 ]
 
 # Includes in <head>
