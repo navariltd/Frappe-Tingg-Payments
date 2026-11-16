@@ -8,3 +8,4 @@ frappe_tingg_payments.patches.dedupe_beep_transaction_ids
 frappe_tingg_payments.patches.set_payment_register_status
 frappe_tingg_payments.patches.link_register_currency
 frappe_tingg_payments.patches.set_tingg_settings_environment
+frappe_tingg_payments.patches.set_tingg_settings_company

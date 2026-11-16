@@ -10,9 +10,14 @@
   "payment_gateway_name",
   "environment",
   "column_break_gateway",
+  "company",
   "logging_section",
   "log_balance_lookups",
-  "column_break_logging"
+  "column_break_logging",
+  "credentials_section",
+  "username",
+  "column_break_credentials",
+  "password"
  ],
  "fields": [
   {
@@ -31,6 +36,15 @@
   {
    "fieldname": "column_break_gateway",
    "fieldtype": "Column Break"
+  },
+  {
+   "description": "Payments from Tingg are posted to this Company. The Tingg Register URL uses it too.",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
   },
   {
    "default": "Live",
@@ -60,11 +74,31 @@
   {
    "fieldname": "column_break_logging",
    "fieldtype": "Column Break"
+  },
+  {
+   "description": "The credentials Tingg sends with every payment confirmation. When set, a confirmation with a different username or password is rejected. Leave both empty to accept confirmations without checking.",
+   "fieldname": "credentials_section",
+   "fieldtype": "Section Break",
+   "label": "Callback Credentials"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Username"
+  },
+  {
+   "fieldname": "column_break_credentials",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-11-09 11:54:17.104303",
+ "modified": "2026-11-16 13:00:00.000000",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Settings",

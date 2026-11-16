@@ -16,19 +16,19 @@
   "account_number",
   "service_id",
   "service_code",
+  "payment_date",
   "extra_data",
   "column_break_vpoe",
   "mode_of_payment",
-  "payment_date",
   "currency",
   "client_code",
-  "payer_narration",
-  "receiver_narration",
   "status_description",
   "merchant_payment_ids",
   "beep_transaction_id",
   "payer_transaction_id",
   "payment_entry",
+  "payer_narration",
+  "receiver_narration",
   "submit_payment",
   "processing_error"
  ],
@@ -54,46 +54,54 @@
   {
    "fieldname": "msisdn",
    "fieldtype": "Data",
-   "label": "MSISDN"
+   "label": "MSISDN",
+   "read_only": 1
   },
   {
    "fieldname": "service_code",
    "fieldtype": "Data",
-   "label": "Service Code"
+   "label": "Service Code",
+   "read_only": 1
   },
   {
    "fieldname": "amount_paid",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Amount Paid",
-   "options": "currency"
+   "options": "currency",
+   "read_only": 1
   },
   {
    "fieldname": "payer_transaction_id",
    "fieldtype": "Data",
-   "label": "Payer Transaction ID"
+   "label": "Payer Transaction ID",
+   "read_only": 1
   },
   {
    "fieldname": "account_number",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Account Number"
+   "label": "Account Number",
+   "read_only": 1
   },
   {
    "fieldname": "payer_narration",
    "fieldtype": "Small Text",
-   "label": "Payer Narration"
+   "label": "Payer Narration",
+   "read_only": 1
   },
   {
    "fieldname": "receiver_narration",
    "fieldtype": "Small Text",
-   "label": "Receiver Narration"
+   "label": "Receiver Narration",
+   "read_only": 1
   },
   {
    "fieldname": "extra_data",
    "fieldtype": "Small Text",
-   "label": "Extra Data"
+   "label": "Extra Data",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_vpoe",
@@ -105,24 +113,28 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Mode of Payment",
-   "options": "Mode of Payment"
+   "options": "Mode of Payment",
+   "read_only": 1
   },
   {
    "fieldname": "payment_date",
    "fieldtype": "Datetime",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Payment Date"
+   "label": "Payment Date",
+   "read_only": 1
   },
   {
    "fieldname": "client_code",
    "fieldtype": "Data",
-   "label": "Client Code"
+   "label": "Client Code",
+   "read_only": 1
   },
   {
    "fieldname": "service_id",
    "fieldtype": "Data",
-   "label": "Service ID"
+   "label": "Service ID",
+   "read_only": 1
   },
   {
    "fieldname": "company",
@@ -157,7 +169,8 @@
   {
    "fieldname": "customer_name",
    "fieldtype": "Data",
-   "label": "Customer Name"
+   "label": "Customer Name",
+   "read_only": 1
   },
   {
    "fieldname": "beep_transaction_id",
@@ -165,6 +178,7 @@
    "in_standard_filter": 1,
    "label": "Beep Transaction ID",
    "no_copy": 1,
+   "read_only": 1,
    "reqd": 1,
    "set_only_once": 1,
    "unique": 1
@@ -172,17 +186,20 @@
   {
    "fieldname": "status_description",
    "fieldtype": "Data",
-   "label": "Status Description"
+   "label": "Status Description",
+   "read_only": 1
   },
   {
    "fieldname": "merchant_payment_ids",
    "fieldtype": "Data",
-   "label": "Merchant Payment IDs"
+   "label": "Merchant Payment IDs",
+   "read_only": 1
   },
   {
    "fieldname": "hashed_msisdn",
    "fieldtype": "Data",
-   "label": "Hashed MSISDN"
+   "label": "Hashed MSISDN",
+   "read_only": 1
   },
   {
    "fieldname": "status",
@@ -206,7 +223,7 @@
  "in_create": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-11-09 12:29:03.551670",
+ "modified": "2026-11-16 15:37:37.338107",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Payment Register",

@@ -9,9 +9,26 @@ from payments.payment_gateways.doctype.mpesa_settings.mpesa_settings import (
 )
 from payments.utils import create_payment_gateway
 
+from ...utils.settings import validate_mode_of_payment_account
+
+REGISTER_URL_DOCTYPE = "Tingg Register URL"
+
 
 class TinggSettings(Document):
 	"""Tingg Settings Doctype"""
+
+	def validate(self) -> None:
+		self.validate_register_url_accounts()
+
+	def validate_register_url_accounts(self) -> None:
+		"""The Register URL's Mode of Payment must have an account for the new Company."""
+		if self.is_new() or not self.has_value_changed("company"):
+			return
+
+		for mode_of_payment in frappe.get_all(
+			REGISTER_URL_DOCTYPE, filters={"tingg_settings": self.name}, pluck="mode_of_payment"
+		):
+			validate_mode_of_payment_account(mode_of_payment, self.company)
 
 	def on_update(self) -> None:
 		"""On Update Hook"""
@@ -28,3 +45,14 @@ class TinggSettings(Document):
 		)
 
 		create_mode_of_payment("Tingg-" + self.payment_gateway_name, payment_type="Phone")
+
+		self.sync_register_url_company()
+
+	def sync_register_url_company(self) -> None:
+		"""Keep the Company on the linked Register URL the same as these settings."""
+		frappe.db.set_value(
+			REGISTER_URL_DOCTYPE,
+			{"tingg_settings": self.name, "company": ["!=", self.company]},
+			"company",
+			self.company,
+		)
