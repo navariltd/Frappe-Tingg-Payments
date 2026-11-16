@@ -2,12 +2,17 @@
 # For license information, please see license.txt
 
 import frappe
+from erpnext import get_company_currency
 from frappe import _
 from frappe.model.document import Document
 from frappe.utils import flt, get_link_to_form, getdate
 
 from ...utils.helpers import create_payment_entry, reconcile_payment_entry
-from ...utils.settings import get_active_register_url
+from ...utils.settings import (
+	get_active_register_url,
+	get_tingg_company,
+	validate_mode_of_payment_account,
+)
 
 RECONCILE_SAVEPOINT = "tingg_register_reconcile"
 
@@ -21,19 +26,28 @@ class TinggPaymentRegister(Document):
 				)
 			)
 		self.set_posting_defaults()
+		self.validate_company()
 		self.update_draft_status()
 
 	def set_posting_defaults(self):
+		self.company = self.company or get_tingg_company()
+
+		if not self.mode_of_payment:
+			register_url = get_active_register_url()
+			self.mode_of_payment = register_url.mode_of_payment if register_url else None
+
 		if not self.currency:
-			self.currency = frappe.defaults.get_global_default("currency")
+			self.currency = (
+				self.company and get_company_currency(self.company)
+			) or frappe.defaults.get_global_default("currency")
 
-		if self.company and self.mode_of_payment:
-			return
-
-		register_url = get_active_register_url()
-		if register_url:
-			self.company = self.company or register_url.company
-			self.mode_of_payment = self.mode_of_payment or register_url.mode_of_payment
+	def validate_company(self):
+		company = get_tingg_company()
+		if company and self.company and self.company != company:
+			frappe.throw(
+				_("Company must be {0}, the Company set on Tingg Settings.").format(frappe.bold(company)),
+				title=_("Wrong Company"),
+			)
 
 	def update_draft_status(self):
 		if self.docstatus == 0 and self.status != "Failed":
@@ -63,6 +77,8 @@ class TinggPaymentRegister(Document):
 				_("Cannot post the payment, the following are missing: {0}").format(", ".join(missing)),
 				title=_("Missing Values"),
 			)
+
+		validate_mode_of_payment_account(self.mode_of_payment, self.company)
 
 	def create_payment_entry(self):
 		existing = frappe.db.get_value(

@@ -5,7 +5,7 @@ from erpnext.selling.doctype.customer.customer import (
 from frappe import _
 
 from ..utils.request_log import log_tingg_request, set_request_reference
-from ..utils.settings import balance_lookup_logging_enabled
+from ..utils.settings import balance_lookup_logging_enabled, get_tingg_company
 
 
 # nosemgrep: frappe-semgrep-rules.rules.security.guest-whitelisted-method
@@ -18,7 +18,7 @@ from ..utils.settings import balance_lookup_logging_enabled
 def get_customer_balance(**kwargs):
 	args = frappe._dict(kwargs)
 
-	company = frappe.defaults.get_user_default("company")
+	company = get_tingg_company() or frappe.defaults.get_user_default("company")
 
 	customer = frappe.db.get_value("Customer", args.get("customer_id"))
 	if customer:

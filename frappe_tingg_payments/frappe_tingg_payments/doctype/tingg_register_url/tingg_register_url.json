@@ -34,11 +34,13 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "tingg_settings.company",
    "fieldname": "company",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Company",
    "options": "Company",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -57,7 +59,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-16 21:14:57.612651",
+ "modified": "2026-11-16 11:56:06.733541",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg Register URL",
@@ -77,6 +79,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": []

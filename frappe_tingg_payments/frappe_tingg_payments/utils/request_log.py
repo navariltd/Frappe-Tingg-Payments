@@ -4,6 +4,9 @@ Each request is logged before the endpoint runs and committed straight away, so 
 log survives even if the endpoint fails and rolls back. Once the endpoint finishes,
 the log is updated with the response sent back to Tingg.
 
+Passwords in the request (e.g. Tingg's callback credentials) are masked before
+they are saved.
+
 Logging never blocks a request: if writing the log fails, the failure goes to the
 Error Log and the endpoint runs as normal.
 """
@@ -15,6 +18,9 @@ import frappe
 from frappe import _
 
 SERVICE_NAME = "Tingg"
+
+REDACTED = "*****"
+SECRET_KEYS = {"password"}
 
 
 # Internal keys Frappe keeps on the response that are not part of what Tingg receives.
@@ -32,8 +38,10 @@ def log_tingg_request(description, request_id_key, is_enabled=None):
 
 	Args:
 	    description: Shown as the Integration Request's description.
-	    request_id_key: Key holding the request's identifier. It is looked up in the
-	        request arguments first and in the response if the arguments lack it.
+	    request_id_key: Where the request's identifier is: either a top-level key, or a
+	        function that takes a dict and returns the identifier (for nested bodies).
+	        It is looked up in the request body first and in the response if the
+	        body lacks it.
 	    is_enabled: Optional callable; when it returns False nothing is logged.
 	"""
 
@@ -70,6 +78,8 @@ def start_request_log(description, kwargs, request_id_key):
 	try:
 		arguments = {k: v for k, v in kwargs.items() if k != "cmd"}
 		request = getattr(frappe.local, "request", None)
+		raw_body = None if arguments else get_raw_body(request)
+		body = arguments or load_json(raw_body)
 
 		log = frappe.get_doc(
 			{
@@ -78,10 +88,10 @@ def start_request_log(description, kwargs, request_id_key):
 				"request_description": description,
 				"is_remote_request": 0,
 				"status": "Queued",
-				"request_id": stringify(arguments.get(request_id_key)),
+				"request_id": get_request_id(body, request_id_key),
 				"url": request.url if request else None,
 				"request_headers": request.headers if request else None,
-				"data": to_json(arguments) if arguments else get_raw_body(request),
+				"data": to_json(redact(body)) if isinstance(body, dict) else raw_body,
 			}
 		)
 		log.insert(ignore_permissions=True)
@@ -110,8 +120,9 @@ def finish_request_log(log_name, request_id_key, error=None):
 		if failed:
 			values["error"] = error or stringify(response.get("statusDescription") or response.get("message"))
 
-		if response.get(request_id_key):
-			values["request_id"] = stringify(response.get(request_id_key))
+		request_id = get_request_id(response, request_id_key)
+		if request_id:
+			values["request_id"] = request_id
 
 		reference = frappe.flags.tingg_request_reference
 		if reference:
@@ -126,6 +137,13 @@ def finish_request_log(log_name, request_id_key, error=None):
 			message=frappe.get_traceback(),
 		)
 		frappe.db.commit()
+
+
+def get_request_id(data, request_id_key):
+	if not isinstance(data, dict):
+		return None
+	value = request_id_key(data) if callable(request_id_key) else data.get(request_id_key)
+	return stringify(value) if value not in (None, "") else None
 
 
 def get_raw_body(request):
@@ -144,3 +162,33 @@ def stringify(value):
 	if isinstance(value, (dict | list)):
 		return to_json(value)
 	return str(value)
+
+
+def load_json(value):
+	"""Parse a JSON string, also unwrapping a JSON document that was encoded twice.
+
+	Returns None if the string is not valid JSON.
+	"""
+	for _attempt in range(2):
+		if not isinstance(value, str):
+			break
+		try:
+			value = json.loads(value)
+		except ValueError:
+			return None
+	return value
+
+
+def redact(value):
+	"""A copy of `value` with every password masked, including inside JSON strings."""
+	if isinstance(value, dict):
+		return {k: REDACTED if str(k).lower() in SECRET_KEYS and v else redact(v) for k, v in value.items()}
+	if isinstance(value, list):
+		return [redact(v) for v in value]
+	if isinstance(value, str) and value.lstrip().startswith(("{", "[")):
+		parsed = load_json(value)
+		if isinstance(parsed, (dict | list)):
+			redacted = redact(parsed)
+			# Keep the string as received unless something in it had to be masked.
+			return to_json(redacted) if redacted != parsed else value
+	return value
