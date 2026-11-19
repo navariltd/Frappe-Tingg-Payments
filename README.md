@@ -150,6 +150,31 @@ If the payment is larger than everything outstanding, or the customer has nothin
 - **Unmatched registers** (no customer matches the account number) are not posted at all. Once someone sets the customer and submits the register, the steps above run as normal.
 - **Reconciliation errors** (for example, an ERPNext _Auto Reconcile_ job already running for the same customer) undo the reconciliation only. Reconcile it by hand in the Payment Reconciliation tool: choose the company, the customer and the receivable account, click **Get Unreconciled Entries**, allocate, then click **Reconcile**.
 
+### Tingg Payment Reconciliation report
+
+Open **Tingg Payment Reconciliation** from the Tingg workspace, its sidebar's
+**Reports** section, or the Desk search bar. It is a standard Frappe **Script Report**,
+available to System Managers, Accounts Managers and Accounts Users with read and
+report permission on Tingg Payment Register. Record-level user permissions apply.
+
+The columns are **Company**, **Customer**, **Amount Paid**, **Status**, **Document
+Status**, **Payment Entry**, **Beep Transaction ID** and **Payer Transaction ID**. Amounts use each register's
+currency. Status is the Tingg processing status; Document Status is the register's
+Draft, Submitted or Cancelled state, not the linked Payment Entry's state.
+Processed does not guarantee invoice allocation. Open the linked Payment Entry
+to inspect its submission and allocation details.
+
+Filter by payment date (From Date and To Date, inclusive), company, customer,
+processing status, document status or exact Beep Transaction ID. With no filters,
+all permitted registers are included, including unmatched payments and cancelled
+registers, ordered by payment date newest first. Missing customers and Payment
+Entries remain blank. No combined amount total is shown because records may use
+different currencies. Standard Frappe print and export actions are available.
+
+The report reads existing records; it does not post payments or reconcile invoices.
+After deploying this app version, run `bench --site <site> migrate` and clear the
+site cache. Review the report on a test site before deploying to production.
+
 ### Installation
 
 1. Ensure you have a working Frappe and ERPNext instance.

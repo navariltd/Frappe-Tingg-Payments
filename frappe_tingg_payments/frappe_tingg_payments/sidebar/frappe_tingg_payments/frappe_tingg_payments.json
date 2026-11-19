@@ -99,9 +99,23 @@
    "open_in_new_tab": 1,
    "show_arrow": 0,
    "type": "Link"
+  },
+  {
+   "label": "Reports",
+   "type": "Section Break",
+   "icon": "accounting",
+   "indent": 1,
+   "collapsible": 1
+  },
+  {
+   "label": "Tingg Payment Reconciliation",
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Tingg Payment Reconciliation",
+   "child": 1
   }
  ],
- "modified": "2026-10-19 12:39:41.492192",
+ "modified": "2026-11-19 04:09:38.222214",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Frappe Tingg Payments",
