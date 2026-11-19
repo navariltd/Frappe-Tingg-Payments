@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"20LO1BtRFD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tingg</span>\",\"col\":12}},{\"id\":\"67N1wLUNlZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Settings\",\"col\":3}},{\"id\":\"z4_p5ejBrQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Register Url\",\"col\":3}},{\"id\":\"uh4x-ft9g0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Payment Register\",\"col\":3}}]",
+ "content": "[{\"id\":\"20LO1BtRFD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tingg</span>\",\"col\":12}},{\"id\":\"67N1wLUNlZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Settings\",\"col\":3}},{\"id\":\"z4_p5ejBrQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Register Url\",\"col\":3}},{\"id\":\"uh4x-ft9g0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Payment Register\",\"col\":3}},{\"id\":\"tingg-reconciliation\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tingg Payment Reconciliation\",\"col\":6}}]",
  "creation": "2026-06-19 13:11:23.675483",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Tingg",
  "links": [],
- "modified": "2026-06-19 13:16:57.645510",
+ "modified": "2026-11-19 04:09:38.222214",
  "modified_by": "Administrator",
  "module": "Frappe Tingg Payments",
  "name": "Tingg",
@@ -48,6 +48,13 @@
    "link_to": "Tingg Payment Register",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "label": "Tingg Payment Reconciliation",
+   "link_to": "Tingg Payment Reconciliation",
+   "type": "Report",
+   "report_ref_doctype": "Tingg Payment Register"
   }
  ],
  "title": "Tingg"

@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "is_standard": "Yes",
+ "module": "Frappe Tingg Payments",
+ "name": "Tingg Payment Reconciliation",
+ "prepared_report": 0,
+ "ref_doctype": "Tingg Payment Register",
+ "report_name": "Tingg Payment Reconciliation",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ],
+ "modified": "2026-11-19 04:09:38.222214"
+}

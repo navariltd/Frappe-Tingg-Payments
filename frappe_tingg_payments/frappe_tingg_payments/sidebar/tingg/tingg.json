@@ -1,4 +1,3 @@
-
 {
   "app": "frappe_tingg_payments",
   "doctype": "Sidebar",
@@ -76,10 +75,25 @@
       "parenttype": "Sidebar",
       "show_arrow": 0,
       "type": "Link"
+    },
+    {
+      "label": "Reports",
+      "type": "Section Break",
+      "icon": "accounting",
+      "indent": 1,
+      "collapsible": 1
+    },
+    {
+      "label": "Tingg Payment Reconciliation",
+      "type": "Link",
+      "link_type": "Report",
+      "link_to": "Tingg Payment Reconciliation",
+      "child": 1
     }
   ],
   "module": "Frappe Tingg Payments",
   "name": "Tingg",
   "standard": 1,
-  "title": "Tingg"
+  "title": "Tingg",
+  "modified": "2026-11-19 04:09:38.222214"
 }
